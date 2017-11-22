@@ -38,11 +38,13 @@
 	Viewer root fragment
 -----------------------------------------------------------------------------%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-<HTML lang="<%= ParameterAccessor.htmlEncode( attributeBean.getLanguage() ) %>">
+<HTML lang="<%= attributeBean.getLanguage() %>">
 	<HEAD>
-		<TITLE><%= ParameterAccessor.htmlEncode( attributeBean.getReportTitle( ) ) %></TITLE>
+		<TITLE><%= attributeBean.getReportTitle( ) %></TITLE>
 		<BASE href="<%= baseHref %>" >
 		
+		<!-- Mimics Internet Explorer 7, it just works on IE8. -->
+		<META HTTP-EQUIV="X-UA-Compatible" CONTENT="IE=EmulateIE7">
 		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
 		<LINK REL="stylesheet" HREF="birt/styles/style.css" TYPE="text/css">
 		<%
@@ -156,7 +158,7 @@
 						<TR>
 							<TD WIDTH="3px"/>
 							<TD>
-								<B><%= ParameterAccessor.htmlEncode( attributeBean.getReportTitle( ) ) %>
+								<B><%= attributeBean.getReportTitle( ) %>
 								</B>
 							</TD>
 							<TD ALIGN='right'>
@@ -186,16 +188,18 @@
 	// <![CDATA[
 		var hasSVGSupport = false;
 		var useVBMethod = false;
-		if ((!!document.createElementNS && !!document.createElementNS(
-				'http://www.w3.org/2000/svg', 'svg').createSVGRect)
-				|| navigator.mimeTypes != null
-				&& navigator.mimeTypes.length > 0
-				&& navigator.mimeTypes["image/svg+xml"] != null) {
-			hasSVGSupport = true;
-		} else {
-			useVBMethod = true;
+		if ( navigator.mimeTypes != null && navigator.mimeTypes.length > 0 )
+		{
+		    if ( navigator.mimeTypes["image/svg+xml"] != null )
+		    {
+		        hasSVGSupport = true;
+		    }
 		}
-
+		else
+		{
+		    useVBMethod = true;
+		}
+		
 	// ]]>
 	</script>
 	

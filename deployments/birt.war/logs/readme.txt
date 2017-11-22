@@ -1,1 +1,1 @@
-The default directory to place BIRT runtime log files1.
+The default directory to place BIRT runtime log files.

@@ -117,9 +117,8 @@ AbstractBaseReportDocument.prototype = Object.extend( new AbstractReportComponen
 		
 		var width = BirtPosition.viewportWidth( ) - tocWidth - (BrowserUtility.isFirefox?6:4);
 
-		// Bug410281 in IE, the width contains the border, unlike in other browsers
-		// add BrowserUtility.isIE8 to support IE8. The containerLeft will be undefined if it is IE8
-		if ( BrowserUtility.isIE6 || BrowserUtility.isIE7 || BrowserUtility.isIE8 ||
+		// in IE, the width contains the border, unlike in other browsers
+		if ( BrowserUtility.isIE6 || BrowserUtility.isIE7 || 
 				BrowserUtility.isOpera || BrowserUtility.isKHTML || BrowserUtility.isSafari )
 		{
 			var containerLeft = 0;
@@ -159,9 +158,7 @@ AbstractBaseReportDocument.prototype = Object.extend( new AbstractReportComponen
 		
 		this.__instance.style.left = containerLeft + "px";
 
-		//Bug410281 In IE9 , even the children length equals 0 , the instance.firstChild is still not null,
-		//It will cause the reportContainer object does not have the style property.
-		if (BrowserUtility.isIE && this.__instance.children.length > 0) {
+		if (BrowserUtility.isIE) {
 			var reportContainer = this.__instance.firstChild;
 
 			if (reportContainer != null) {
