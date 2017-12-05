@@ -7,7 +7,7 @@
     <property name="imageDPI">96</property>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.datatools.enablement.oda.xml" name="Data Source" id="111">
-            <property name="FILELIST">http://cachuelos-cachuelos.193b.starter-ca-central-1.openshiftapps.com/rest/reportstars/workerstars</property>
+            <property name="FILELIST">http://cachuelos-cachuelos.b9ad.pro-us-east-1.openshiftapps.com/rest/reportstars/workerstars</property>
         </oda-data-source>
     </data-sources>
     <data-sets>
